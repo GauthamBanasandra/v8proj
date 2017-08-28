@@ -12,16 +12,9 @@
 #include "err_extract.hpp"
 
 void ExtractError(v8::Isolate *isolate) {
-  const char *metadata =
-      "{"
-      "requestID\": \"2812a4de-0dff-46f8-8b1d-13bf1494ba9d\","
-      "errors\": [{\"code\":12003,\"msg\":\"Keyspace not found keyspace "
-      "travel-sample - cause: No bucket named travel-sample\"}],"
-      "status\": \"fatal\","
-      "metrics\": {\"elapsedTime\": \"53.044954ms\",\"executionTime\": "
-      "\"53.011543ms\",\"resultCount\": 0,\"resultSize\": 0,\"errorCount\": 1}"
-      "}";
-  ExtractErrorMsg(metadata, isolate);
+  std::string metadata_raw = R"({"requestID": "f8c21185-9a1a-4e75-b91d-0ed6ab2f5332","errors": [{"code": 12003,"msg": "Keyspace not found keyspace travel-sample - cause: No bucket named travel-sample"}],"status": "fatal","metrics": {"elapsedTime": "57.817618ms","executionTime": "57.784571ms","resultCount": 0,"resultSize": 0,"errorCount": 1}}
+  )";
+  ExtractErrorMsg(metadata_raw.c_str(), isolate);
 }
 
 void ExtractErrorMsg(const char *metadata, v8::Isolate *isolate) {
@@ -29,9 +22,17 @@ void ExtractErrorMsg(const char *metadata, v8::Isolate *isolate) {
 
   auto metadata_v8str = v8::String::NewFromUtf8(isolate, metadata);
   auto metadata_obj = v8::JSON::Parse(metadata_v8str).As<v8::Object>();
-  auto errors_v8arr =
-      metadata_obj->Get(v8::String::NewFromUtf8(isolate, "errors"))
-          .As<v8::Array>();
   
-  std::cout << "errors length:\t" << errors_v8arr->Length() << std::endl;
+  if (!metadata_obj.IsEmpty()) {
+    auto errors_v8val = metadata_obj->Get(v8::String::NewFromUtf8(isolate, "errors"));
+    auto errors_v8arr = errors_v8val.As<v8::Array>();
+    for (uint32_t i = 0; i < errors_v8arr->Length(); ++i) {
+      auto error = errors_v8arr->Get(i).As<v8::Object>();
+      auto msg_v8str = error->Get(v8::String::NewFromUtf8(isolate, "msg"));
+      v8::String::Utf8Value msg(msg_v8str);
+      std::cout << "Error message:\t" << *msg << std::endl;
+    }
+  } else {
+    std::cout << "Invalid JSON" << std::endl;
+  }
 }
