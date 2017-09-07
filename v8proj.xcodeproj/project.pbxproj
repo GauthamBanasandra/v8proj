@@ -269,6 +269,8 @@
 		ACA240961F4D503C009E3538 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "";
+				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
 					"~/.cbdepscache/include/",
 					"~/.cbdepscache/",
@@ -283,12 +285,15 @@
 					"-headerpad_max_install_names",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REZ_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
 		ACA240971F4D503C009E3538 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "";
+				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
 					"~/.cbdepscache/include/",
 					"~/.cbdepscache/",
@@ -303,6 +308,7 @@
 					"-headerpad_max_install_names",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REZ_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
