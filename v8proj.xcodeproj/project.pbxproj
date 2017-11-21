@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC1AE6BD1F627670009FE708 /* http_parser.cc in Sources */ = {isa = PBXBuildFile; fileRef = ACBD58421F611B4300BE3998 /* http_parser.cc */; };
+		AC1AE6BE1F627670009FE708 /* inspector_agent.cc in Sources */ = {isa = PBXBuildFile; fileRef = ACBD58431F611B4300BE3998 /* inspector_agent.cc */; };
+		AC1AE6BF1F627670009FE708 /* inspector_io.cc in Sources */ = {isa = PBXBuildFile; fileRef = ACBD58441F611B4300BE3998 /* inspector_io.cc */; };
+		AC1AE6C01F627670009FE708 /* inspector_socket_server.cc in Sources */ = {isa = PBXBuildFile; fileRef = ACBD58451F611B4300BE3998 /* inspector_socket_server.cc */; };
+		AC1AE6C11F627670009FE708 /* inspector_socket.cc in Sources */ = {isa = PBXBuildFile; fileRef = ACBD58461F611B4300BE3998 /* inspector_socket.cc */; };
 		AC1D4EDE1F4EB4640011B61F /* exc_bench.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC1D4EDC1F4EB4640011B61F /* exc_bench.cpp */; };
 		AC1D4EE31F4EB6EB0011B61F /* err_extract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC1D4EE11F4EB6EB0011B61F /* err_extract.cpp */; };
+		AC262EA31FC2E45C00BE351B /* bucket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC262EA11FC2E45C00BE351B /* bucket.cpp */; };
 		ACA240921F4D503C009E3538 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACA240911F4D503C009E3538 /* main.cpp */; };
 		ACA2409C1F4D64C0009E3538 /* jsexception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACA240991F4D646C009E3538 /* jsexception.cpp */; };
-		ACBD58481F611B4300BE3998 /* http_parser.cc in Sources */ = {isa = PBXBuildFile; fileRef = ACBD58421F611B4300BE3998 /* http_parser.cc */; };
-		ACBD58491F611B4300BE3998 /* inspector_agent.cc in Sources */ = {isa = PBXBuildFile; fileRef = ACBD58431F611B4300BE3998 /* inspector_agent.cc */; };
-		ACBD584A1F611B4300BE3998 /* inspector_io.cc in Sources */ = {isa = PBXBuildFile; fileRef = ACBD58441F611B4300BE3998 /* inspector_io.cc */; };
-		ACBD584B1F611B4300BE3998 /* inspector_socket_server.cc in Sources */ = {isa = PBXBuildFile; fileRef = ACBD58451F611B4300BE3998 /* inspector_socket_server.cc */; };
-		ACBD584C1F611B4300BE3998 /* inspector_socket.cc in Sources */ = {isa = PBXBuildFile; fileRef = ACBD58461F611B4300BE3998 /* inspector_socket.cc */; };
 		ACBD584D1F611B4300BE3998 /* main.cc in Sources */ = {isa = PBXBuildFile; fileRef = ACBD58471F611B4300BE3998 /* main.cc */; };
 /* End PBXBuildFile section */
 
@@ -41,10 +42,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AC1AE6B41F626D5D009FE708 /* libeventing-inspector.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libeventing-inspector.a"; path = "../../github/couchbase/couchmaster/build/goproj/src/github.com/couchbase/eventing/third_party/inspector/libeventing-inspector.a"; sourceTree = "<group>"; };
 		AC1D4EDC1F4EB4640011B61F /* exc_bench.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = exc_bench.cpp; sourceTree = "<group>"; };
 		AC1D4EDD1F4EB4640011B61F /* exc_bench.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = exc_bench.hpp; sourceTree = "<group>"; };
 		AC1D4EE11F4EB6EB0011B61F /* err_extract.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = err_extract.cpp; sourceTree = "<group>"; };
 		AC1D4EE21F4EB6EB0011B61F /* err_extract.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = err_extract.hpp; sourceTree = "<group>"; };
+		AC262EA11FC2E45C00BE351B /* bucket.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = bucket.cpp; sourceTree = "<group>"; };
+		AC262EA21FC2E45C00BE351B /* bucket.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = bucket.hpp; sourceTree = "<group>"; };
+		AC55986A1FC4110500A357F9 /* input1.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = input1.js; sourceTree = "<group>"; };
 		ACA2408E1F4D503C009E3538 /* v8proj */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = v8proj; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA240911F4D503C009E3538 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		ACA240991F4D646C009E3538 /* jsexception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsexception.cpp; sourceTree = "<group>"; };
@@ -85,11 +90,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC1AE6B31F626D5D009FE708 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AC1AE6B41F626D5D009FE708 /* libeventing-inspector.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AC1D4EDF1F4EB68E0011B61F /* include */ = {
 			isa = PBXGroup;
 			children = (
 				AC1D4EE21F4EB6EB0011B61F /* err_extract.hpp */,
 				ACA2409A1F4D646C009E3538 /* jsexception.hpp */,
+				AC262EA21FC2E45C00BE351B /* bucket.hpp */,
 				AC1D4EDD1F4EB4640011B61F /* exc_bench.hpp */,
 			);
 			name = include;
@@ -102,8 +116,17 @@
 				ACA240991F4D646C009E3538 /* jsexception.cpp */,
 				AC1D4EDC1F4EB4640011B61F /* exc_bench.cpp */,
 				AC1D4EE11F4EB6EB0011B61F /* err_extract.cpp */,
+				AC262EA11FC2E45C00BE351B /* bucket.cpp */,
 			);
 			name = src;
+			sourceTree = "<group>";
+		};
+		AC5598691FC410F300A357F9 /* input */ = {
+			isa = PBXGroup;
+			children = (
+				AC55986A1FC4110500A357F9 /* input1.js */,
+			);
+			name = input;
 			sourceTree = "<group>";
 		};
 		ACA240851F4D503C009E3538 = {
@@ -112,6 +135,7 @@
 				ACA240901F4D503C009E3538 /* v8proj */,
 				ACBD58331F611AE400BE3998 /* v8_inspector */,
 				ACA2408F1F4D503C009E3538 /* Products */,
+				AC1AE6B31F626D5D009FE708 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +151,7 @@
 		ACA240901F4D503C009E3538 /* v8proj */ = {
 			isa = PBXGroup;
 			children = (
+				AC5598691FC410F300A357F9 /* input */,
 				AC1D4EE01F4EB6970011B61F /* src */,
 				AC1D4EDF1F4EB68E0011B61F /* include */,
 			);
@@ -277,6 +302,7 @@
 			files = (
 				ACA240921F4D503C009E3538 /* main.cpp in Sources */,
 				ACA2409C1F4D64C0009E3538 /* jsexception.cpp in Sources */,
+				AC262EA31FC2E45C00BE351B /* bucket.cpp in Sources */,
 				AC1D4EDE1F4EB4640011B61F /* exc_bench.cpp in Sources */,
 				AC1D4EE31F4EB6EB0011B61F /* err_extract.cpp in Sources */,
 			);
@@ -287,11 +313,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACBD584D1F611B4300BE3998 /* main.cc in Sources */,
-				ACBD584C1F611B4300BE3998 /* inspector_socket.cc in Sources */,
-				ACBD58481F611B4300BE3998 /* http_parser.cc in Sources */,
-				ACBD584A1F611B4300BE3998 /* inspector_io.cc in Sources */,
-				ACBD58491F611B4300BE3998 /* inspector_agent.cc in Sources */,
-				ACBD584B1F611B4300BE3998 /* inspector_socket_server.cc in Sources */,
+				AC1AE6BD1F627670009FE708 /* http_parser.cc in Sources */,
+				AC1AE6BE1F627670009FE708 /* inspector_agent.cc in Sources */,
+				AC1AE6BF1F627670009FE708 /* inspector_io.cc in Sources */,
+				AC1AE6C01F627670009FE708 /* inspector_socket_server.cc in Sources */,
+				AC1AE6C11F627670009FE708 /* inspector_socket.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +463,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = "~/.cbdepscache/include";
-				LIBRARY_SEARCH_PATHS = "~/.cbdepscache/lib";
+				LIBRARY_SEARCH_PATHS = (
+					"~/.cbdepscache/lib",
+					/Users/gautham/gosrc/src/github.com/couchbase/eventing.eg/v8inspector,
+				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DSTANDALONE_BUILD=1",
@@ -460,7 +489,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = "~/.cbdepscache/include";
-				LIBRARY_SEARCH_PATHS = "~/.cbdepscache/lib";
+				LIBRARY_SEARCH_PATHS = (
+					"~/.cbdepscache/lib",
+					/Users/gautham/gosrc/src/github.com/couchbase/eventing.eg/v8inspector,
+				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DSTANDALONE_BUILD=1",
@@ -507,6 +539,7 @@
 				ACBD58381F611AE400BE3998 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

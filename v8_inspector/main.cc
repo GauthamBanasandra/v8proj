@@ -14,7 +14,6 @@
 
 #define BUF_SIZE 1000
 
-using namespace v8;
 using namespace inspector;
 
 MaybeLocal<String> ReadFile(Isolate *isolate, const char *name);
@@ -58,6 +57,7 @@ bool ExecuteString(Isolate *isolate, Local<String> source, Local<Value> name,
   ScriptOrigin origin(name);
   Local<Context> context(isolate->GetCurrentContext());
   Local<Script> script;
+
   if (!Script::Compile(context, source, &origin).ToLocal(&script)) {
     return false;
   } else {
@@ -75,7 +75,7 @@ bool ExecuteString(Isolate *isolate, Local<String> source, Local<Value> name,
         printf("%s\n", cstr);
       }
       Handle<Value> exponent = context->Global()->Get(
-          String::NewFromUtf8(isolate, "exponent2", NewStringType::kNormal)
+          String::NewFromUtf8(isolate, "exponent", NewStringType::kNormal)
               .ToLocalChecked());
       Handle<Function> expFun = Handle<Function>::Cast(exponent);
       Handle<Value> arg[2];
@@ -88,6 +88,24 @@ bool ExecuteString(Isolate *isolate, Local<String> source, Local<Value> name,
 
       return true;
     }
+  }
+}
+
+void ExecuteScript(Isolate *isolate, Agent *agent) {
+  HandleScope handle_scope(isolate);
+  Local<Context> context(isolate->GetCurrentContext());
+  TryCatch try_catch(isolate);
+
+  Handle<Value> exponent = context->Global()->Get(
+      String::NewFromUtf8(isolate, "exponent", NewStringType::kNormal)
+          .ToLocalChecked());
+  Handle<Function> expFun = Handle<Function>::Cast(exponent);
+  Handle<Value> arg[2];
+  arg[0] = Integer::New(isolate, 10);
+  arg[1] = Integer::New(isolate, 2);
+  Handle<Value> js_result = expFun->Call(Null(isolate), 2, arg);
+  if (try_catch.HasCaught()) {
+    agent->FatalException(try_catch.Exception(), try_catch.Message());
   }
 }
 
@@ -138,31 +156,33 @@ int main(int argc, char *argv[]) {
     Local<Context> context = Context::New(isolate, NULL, global);
     Context::Scope context_scope(context);
 
+    // File location to store the chrome debugger URL.
     char buffer[BUF_SIZE];
     char *cwd = getcwd(buffer, sizeof(buffer));
     std::string url_path = cwd;
     url_path += "frontend.url";
-    
+
     Agent *agent = new Agent("127.0.0.1", url_path.c_str());
     agent->Start(isolate, platform, argv[1]);
     agent->PauseOnNextJavascriptStatement("Break on start");
 
     Local<String> file_name =
-        String::NewFromUtf8(isolate, argv[1], NewStringType::kNormal)
+        String::NewFromUtf8(isolate, "/tmp/xyz.js", NewStringType::kNormal)
             .ToLocalChecked();
     Local<String> source;
     if (!ReadFile(isolate, argv[1]).ToLocal(&source)) {
       fprintf(stderr, "Error reading '%s'\n", argv[1]);
       return 1;
     }
+
+    ScriptOrigin origin(file_name);
+    auto script = Script::Compile(context, source, &origin).ToLocalChecked();
+    script->Run(context);
     
-    bool success =
-        ExecuteString(isolate, source, file_name, false, true, agent);
+//    ExecuteString(isolate, source, file_name, false, true, agent);
+    ExecuteScript(isolate, agent);
     while (platform::PumpMessageLoop(platform, isolate)) {
     }
-    
-    if (!success)
-      return 1;
   }
 
   // Dispose the isolate and tear down V8.
