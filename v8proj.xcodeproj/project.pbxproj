@@ -15,6 +15,8 @@
 		AC1D4EDE1F4EB4640011B61F /* exc_bench.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC1D4EDC1F4EB4640011B61F /* exc_bench.cpp */; };
 		AC1D4EE31F4EB6EB0011B61F /* err_extract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC1D4EE11F4EB6EB0011B61F /* err_extract.cpp */; };
 		AC262EA31FC2E45C00BE351B /* bucket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC262EA11FC2E45C00BE351B /* bucket.cpp */; };
+		AC2C06011FC52CB9004200EF /* process.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC2C06001FC52CB9004200EF /* process.cpp */; };
+		AC2C06031FC52F89004200EF /* shell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AC2C06021FC52F89004200EF /* shell.cpp */; };
 		ACA240921F4D503C009E3538 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACA240911F4D503C009E3538 /* main.cpp */; };
 		ACA2409C1F4D64C0009E3538 /* jsexception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACA240991F4D646C009E3538 /* jsexception.cpp */; };
 		ACBD584D1F611B4300BE3998 /* main.cc in Sources */ = {isa = PBXBuildFile; fileRef = ACBD58471F611B4300BE3998 /* main.cc */; };
@@ -49,6 +51,8 @@
 		AC1D4EE21F4EB6EB0011B61F /* err_extract.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = err_extract.hpp; sourceTree = "<group>"; };
 		AC262EA11FC2E45C00BE351B /* bucket.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = bucket.cpp; sourceTree = "<group>"; };
 		AC262EA21FC2E45C00BE351B /* bucket.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = bucket.hpp; sourceTree = "<group>"; };
+		AC2C06001FC52CB9004200EF /* process.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = process.cpp; sourceTree = "<group>"; };
+		AC2C06021FC52F89004200EF /* shell.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = shell.cpp; sourceTree = "<group>"; };
 		AC55986A1FC4110500A357F9 /* input1.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = input1.js; sourceTree = "<group>"; };
 		ACA2408E1F4D503C009E3538 /* v8proj */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = v8proj; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA240911F4D503C009E3538 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 				AC1D4EDC1F4EB4640011B61F /* exc_bench.cpp */,
 				AC1D4EE11F4EB6EB0011B61F /* err_extract.cpp */,
 				AC262EA11FC2E45C00BE351B /* bucket.cpp */,
+				AC2C06001FC52CB9004200EF /* process.cpp */,
+				AC2C06021FC52F89004200EF /* shell.cpp */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -300,11 +306,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC2C06031FC52F89004200EF /* shell.cpp in Sources */,
 				ACA240921F4D503C009E3538 /* main.cpp in Sources */,
 				ACA2409C1F4D64C0009E3538 /* jsexception.cpp in Sources */,
 				AC262EA31FC2E45C00BE351B /* bucket.cpp in Sources */,
 				AC1D4EDE1F4EB4640011B61F /* exc_bench.cpp in Sources */,
 				AC1D4EE31F4EB6EB0011B61F /* err_extract.cpp in Sources */,
+				AC2C06011FC52CB9004200EF /* process.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
